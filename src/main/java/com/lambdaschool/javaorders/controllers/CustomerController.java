@@ -2,6 +2,10 @@ package com.lambdaschool.javaorders.controllers;
 
 import com.lambdaschool.javaorders.models.Customer;
 import com.lambdaschool.javaorders.repository.CustomerRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+@Api(value = "Orders Swagger Application", description = "SQLite plus Swagger by DKM")
 @RestController
 @RequestMapping(path = {}, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CustomerController
@@ -18,6 +23,14 @@ public class CustomerController
     CustomerRepository customerrepos;
 
     // /customers - returns all the customer
+    @ApiOperation(value = "list All Customers", response = List.class)
+    @ApiResponses(value =
+            {
+                    @ApiResponse(code = 200, message = "DKM Successfully received list"),
+                    @ApiResponse(code = 401, message = "DKM You are not authorized to the view the resource"),
+                    @ApiResponse(code = 403, message = "DKM Accessing the resource you were trying to reach is forbidden"),
+                    @ApiResponse(code = 404, message = "DKM The resource you were trying to reach is not found")
+            })
     @GetMapping("/customers")
     public List<Customer> allCustomers()
     {
@@ -26,6 +39,14 @@ public class CustomerController
     }
 
     // /customers/custcode/{custcode}
+    @ApiOperation(value = "Customer based off of customer id", response = Customer.class)
+    @ApiResponses(value =
+            {
+                    @ApiResponse(code = 200, message = "Successfully received customer - DKM"),
+                    @ApiResponse(code = 401, message = "You are not authorized to the view the resource - DKM"),
+                    @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden - DKM"),
+                    @ApiResponse(code = 404, message = "The resource you were trying to reach is not found - DKM")
+            })
     @GetMapping("/customers/custcode/{custcode}")
     public Customer findCustById(@PathVariable long custcode)
     {
