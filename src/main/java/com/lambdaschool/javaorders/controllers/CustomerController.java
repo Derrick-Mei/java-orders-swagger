@@ -119,5 +119,6 @@ public class CustomerController
     public List<Object[]> getCustomerByNameWithAllOrders(@PathVariable String custname) {
         return customerrepos.findCustomerByNameWithOrders(custname);
     }
+
 }
 
