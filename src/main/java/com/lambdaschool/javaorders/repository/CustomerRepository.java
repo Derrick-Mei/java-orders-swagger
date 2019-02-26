@@ -26,6 +26,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>
     @Query(value = "Select * from orders WHERE orders.custcode IN (SELECT customers.custcode FROM customers LEFT JOIN orders ON customers.custcode = orders.custcode WHERE orders.custcode = :custcode)", nativeQuery = true)
     List<Object[]> findCustOrdersByCustCode(@Param("custcode") long custcode);
 
+//    public Customer findByCustcode(long custcode);
+
 //    public void deleteCustomerById(long id);
 
 

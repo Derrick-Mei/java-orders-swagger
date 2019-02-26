@@ -4,9 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "orders")
-@Data
 public class Order
 {
     @Id
@@ -15,10 +15,10 @@ public class Order
     private long id;
 
     @Column(name = "ordamount")
-    private double ordAmount;
+    private double ordamount;
 
     @Column(name = "advanceamount")
-    private double advanceAmount;
+    private double advanceamount;
 
     @ManyToOne
     @JoinColumn(name = "custcode", nullable = false)
@@ -31,29 +31,10 @@ public class Order
     private Agent agent;
 
     @Column(name = "orddescription")
-    private String ordDescription;
+    private String orddescription;
 
     public Order()
     {
     }
 
-    public Customer getCustomer()
-    {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer)
-    {
-        this.customer = customer;
-    }
-
-    public Agent getAgent()
-    {
-        return agent;
-    }
-
-    public void setAgent(Agent agent)
-    {
-        this.agent = agent;
-    }
 }

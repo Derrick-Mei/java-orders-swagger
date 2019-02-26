@@ -6,47 +6,47 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "customers")
-@Data
 public class Customer
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "custcode")
-    private Long custCode;
+    private long custcode;
 
     @Column(nullable = false, name = "custname")
-    private String custName;
+    private String custname;
 
     @Column(name = "custcity")
-    private String custCity;
+    private String custcity;
 
     @Column(name = "workingarea")
-    private String workingArea;
+    private String workingarea;
 
     @Column(name = "custcountry")
-    private String custCountry;
+    private String custcountry;
 
     private String grade;
 
     @Column(name = "openingamt")
-    private double openingAmt;
+    private double openingamt;
 
     @Column(name = "receiveamt")
-    private double receiveAmt;
+    private double receiveamt;
 
     @Column(name = "paymentamt")
-    private double paymentAmt;
+    private double paymentamt;
 
     @Column(name = "outstandingamt")
-    private double outstandingAmt;
+    private double outstandingamt;
 
     private String phone;
 
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
-    @JsonIgnore
+//    @JsonIgnore
     private Agent agent;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "customer")
@@ -55,16 +55,6 @@ public class Customer
 
     public Customer()
     {
-    }
-
-    public Set<Order> getOrders()
-    {
-        return orders;
-    }
-
-    public void setOrders(Set<Order> orders)
-    {
-        this.orders = orders;
     }
 
 }

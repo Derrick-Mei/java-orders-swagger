@@ -2,12 +2,14 @@ package com.lambdaschool.javaorders.controllers;
 
 import com.lambdaschool.javaorders.models.Agent;
 import com.lambdaschool.javaorders.repository.AgentRepository;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(value = "Orders Swagger Application - AgentController", description = "SQLite plus Swagger by DKM")
 @RestController
 @RequestMapping(path = {}, produces = MediaType.APPLICATION_JSON_VALUE)
 public class AgentController

@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "agents")
-@Data //@Data from lombok allows me to not have to do boilerplate for getters and setters
+@Data
 public class Agent
 {
     @Id
@@ -17,10 +17,10 @@ public class Agent
     private long id;
 
     @Column(name = "agentname")
-    private String agentName;
+    private String agentname;
 
     @Column(name = "workingarea")
-    private String workingArea;
+    private String workingarea;
 
     private double commission;
 
@@ -41,23 +41,5 @@ public class Agent
     {
     }
 
-    public Set<Order> getOrders()
-    {
-        return orders;
-    }
 
-    public void setOrders(Set<Order> orders)
-    {
-        this.orders = orders;
-    }
-
-    public Set<Customer> getCustomers()
-    {
-        return customers;
-    }
-
-    public void setCustomers(Set<Customer> customers)
-    {
-        this.customers = customers;
-    }
 }
